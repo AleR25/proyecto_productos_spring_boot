@@ -1,15 +1,17 @@
-package com.gyl.CrudGyl.Service.impl;
+package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.Service.IProductoService;
+import com.gyl.CrudGyl.service.IProductoService;
 import com.gyl.CrudGyl.dto.ProductoRequestDto;
 import com.gyl.CrudGyl.dto.ProductoResponseDto;
 import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.repository.IProductoRepositor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductoServiceImpl implements IProductoService
 {
     private IProductoRepositor iproductoRepositor;
@@ -47,6 +49,7 @@ public class ProductoServiceImpl implements IProductoService
                 ));
     }
 
+    @Override
     public ProductoResponseDto actualizar(Long id, ProductoRequestDto dto)
     {
         Producto producto = iproductoRepositor.findById(id)
@@ -60,7 +63,8 @@ public class ProductoServiceImpl implements IProductoService
         return ProductoMapper.toResponseDto(guardado);
     }
 
-    public  void eliminar(long id)
+    @Override
+    public void eliminar(Long id)
     {
         Producto producto = iproductoRepositor.findById(id)
                 .orElseThrow(() -> new RecursoNoEncontradoException(
@@ -68,5 +72,10 @@ public class ProductoServiceImpl implements IProductoService
                 ));
 
         iproductoRepositor.delete(producto);
+    }
+
+    @Override
+    public List<ProductoResponseDto> busquedaNombre(String Nombre) {
+        return List.of();
     }
 }

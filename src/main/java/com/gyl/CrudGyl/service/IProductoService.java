@@ -1,4 +1,4 @@
-package com.gyl.CrudGyl.Service;
+package com.gyl.CrudGyl.service;
 
 import com.gyl.CrudGyl.dto.ProductoRequestDto;
 import com.gyl.CrudGyl.dto.ProductoResponseDto;
@@ -12,4 +12,10 @@ public interface IProductoService
     List<ProductoResponseDto> listar();
 
     ProductoResponseDto buscarPorId(Long id);
+
+    ProductoResponseDto actualizar(Long id, ProductoRequestDto dto);
+
+    void eliminar(Long id);
+
+    List<ProductoResponseDto> busquedaNombre(String nombre);
 }
