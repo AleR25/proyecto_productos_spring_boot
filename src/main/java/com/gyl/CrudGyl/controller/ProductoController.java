@@ -33,30 +33,28 @@ public class ProductoController {
         return iProductoService.listar();
     }
 
-    @PostMapping
-    public ProductoResponseDto buscarPorId(@RequestBody Long id)
+    @GetMapping("/{id}")
+    public ProductoResponseDto buscarPorId(@PathVariable Long id)
     {
         return iProductoService.buscarPorId(id);
     };
 
     //Por cada parametro tengo q poner las validaciones?
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ProductoResponseDto actualizar(@Valid @RequestBody Long id, ProductoRequestDto dto)
+    @PutMapping("/{id}")
+    public ProductoResponseDto actualizar(@Valid @PathVariable Long id,@Valid @RequestBody ProductoRequestDto dto)
     {
         return iProductoService.actualizar(id, dto);
     };
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void eliminar(Long id)
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id)
     {
         iProductoService.eliminar(id);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public List<ProductoResponseDto> busquedaNombre(@Valid String nombre)
+    @GetMapping("/buscar")
+    public List<ProductoResponseDto> busquedaNombre(@RequestParam String nombre)
     {
         return iProductoService.busquedaNombre(nombre);
     }

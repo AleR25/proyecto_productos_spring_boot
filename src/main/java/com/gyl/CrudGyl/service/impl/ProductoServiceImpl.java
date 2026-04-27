@@ -75,7 +75,10 @@ public class ProductoServiceImpl implements IProductoService
     }
 
     @Override
-    public List<ProductoResponseDto> busquedaNombre(String Nombre) {
-        return List.of();
+    public List<ProductoResponseDto> busquedaNombre(String nombre){
+        return iproductoRepositor.findByNombre(nombre)
+                .stream()
+                .map(ProductoMapper::toResponseDto)
+                .toList();
     }
 }
