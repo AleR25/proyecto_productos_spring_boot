@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name="tipo_producto")
 @Getter
@@ -16,7 +18,7 @@ public class TipoProducto
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idTipoProducto;
 
     @Column(nullable = false, length = 100)
     private String nombre;
@@ -24,5 +26,9 @@ public class TipoProducto
     @Column(nullable = false, length = 200)
     private String descripcion;
 
+    @OneToMany(mappedBy = "idProducto")
+    private List<Producto> productos;
+
+    @Column(nullable = false)
     private Boolean estadoTipoProducto;
 }

@@ -7,6 +7,7 @@ import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.repository.IProductoRepositor;
+import com.gyl.CrudGyl.service.ITipoProductoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

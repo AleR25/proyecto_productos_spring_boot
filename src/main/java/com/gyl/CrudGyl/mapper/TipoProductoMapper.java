@@ -23,7 +23,7 @@ public class TipoProductoMapper
     {
         return new TipoProductoResponseDto
                 (
-                        tipoProducto.getId(),
+                        tipoProducto.getIdTipoProducto(),
                         tipoProducto.getNombre(),
                         tipoProducto.getDescripcion(),
                         tipoProducto.getEstadoTipoProducto()

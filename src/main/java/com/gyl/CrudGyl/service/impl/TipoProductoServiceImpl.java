@@ -2,8 +2,10 @@ package com.gyl.CrudGyl.service.impl;
 
 import com.gyl.CrudGyl.dto.TipoProductoRequestDto;
 import com.gyl.CrudGyl.dto.TipoProductoResponseDto;
+import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.entity.TipoProducto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
+import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.mapper.TipoProductoMapper;
 import com.gyl.CrudGyl.repository.ITipoProductoRepositor;
 import com.gyl.CrudGyl.service.ITipoProductoService;
@@ -60,17 +62,28 @@ public class TipoProductoServiceImpl implements ITipoProductoService
                         ));
 
         TipoProductoMapper.updateEntity(tipoProducto, dto);
-        return null;
+        TipoProducto guardado = iTipoProductoRepositor.save(tipoProducto);
+        return TipoProductoMapper.toResponseDto(guardado);
     }
 
     @Override
     public TipoProductoResponseDto cambioDeEstado(Long id) {
-        return null;
+        TipoProducto tipoProducto = iTipoProductoRepositor.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException(
+                        "No se encontró el id " + id
+                ));
+
+        tipoProducto.setEstadoTipoProducto(false);
+        iTipoProductoRepositor.save(tipoProducto);
+
+        return TipoProductoMapper.toResponseDto(tipoProducto);
     }
 
     @Override
     public List<TipoProductoResponseDto> busquedaNombre(String nombre) {
-        return List.of();
+        return iTipoProductoRepositor.findByNombre(nombre)
+                .stream()
+                .map(TipoProductoMapper::toResponseDto)
+                .toList();
     }
-
 }
