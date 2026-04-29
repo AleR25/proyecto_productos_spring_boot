@@ -46,11 +46,11 @@ public class ProductoController {
         return iProductoService.actualizar(id, dto);
     };
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminar(@PathVariable Long id)
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/{id}")
+    public ProductoResponseDto cambioDeEstado(@PathVariable Long id)
     {
-        iProductoService.eliminar(id);
+        return iProductoService.cambioDeEstado(id);
     }
 
     @GetMapping("/buscar")

@@ -16,7 +16,10 @@ public record ProductoRequestDto
 
             @NotNull(message = "El Stock es obligatorio")
             @Min(value=0, message = "El stock no puede ser negativo")
-            Integer stock
+            Integer stock,
+
+            @NotNull(message = "El producto tiene que estar activo o no")
+            Boolean estadoProducto
         )
 {
 

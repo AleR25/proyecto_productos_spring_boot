@@ -26,7 +26,8 @@ public class ProductoMapper
                 producto.getId(),
                 producto.getNombre(),
                 producto.getPrecio(),
-                producto.getStock()
+                producto.getStock(),
+                producto.isEstadoProducto()
         );
     }
 
@@ -34,5 +35,6 @@ public class ProductoMapper
         producto.setNombre(dto.nombre());
         producto.setPrecio(dto.precio());
         producto.setStock(dto.stock());
+        producto.setEstadoProducto(dto.estadoProducto());
     }
 }

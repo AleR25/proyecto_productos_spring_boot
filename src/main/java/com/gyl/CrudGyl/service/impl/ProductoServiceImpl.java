@@ -45,7 +45,7 @@ public class ProductoServiceImpl implements IProductoService
         return iproductoRepositor.findById(id)
                 .map(ProductoMapper::toResponseDto)
                 .orElseThrow(() -> new RecursoNoEncontradoException(
-                    "No se encontró el id " + id
+                    "No se encontró el ID " + id
                 ));
     }
 
@@ -54,7 +54,7 @@ public class ProductoServiceImpl implements IProductoService
     {
         Producto producto = iproductoRepositor.findById(id)
                 .orElseThrow(() -> new RecursoNoEncontradoException(
-                        "No se encontró el id " + id
+                        "No se encontró el ID " + id
                 ));
 
         ProductoMapper.updateEntity(producto, dto);
@@ -64,14 +64,17 @@ public class ProductoServiceImpl implements IProductoService
     }
 
     @Override
-    public void eliminar(Long id)
+    public ProductoResponseDto cambioDeEstado(Long id)
     {
         Producto producto = iproductoRepositor.findById(id)
                 .orElseThrow(() -> new RecursoNoEncontradoException(
                         "No se encontró el id " + id
                 ));
 
-        iproductoRepositor.delete(producto);
+        producto.setEstadoProducto(false);
+        iproductoRepositor.save(producto);
+
+        return ProductoMapper.toResponseDto(producto);
     }
 
     @Override

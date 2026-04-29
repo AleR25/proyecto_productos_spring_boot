@@ -5,15 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="productos")
+@Table(name="tipo_producto")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Producto
+public class TipoProducto
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,12 +21,8 @@ public class Producto
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    @Column(nullable = false)
-    private Double precio;
+    @Column(nullable = false, length = 200)
+    private String descripcion;
 
-    @Column(nullable = false)
-    private Integer stock;
-
-    @Column(nullable = false)
-    private boolean estadoProducto;
+    private Boolean estadoTipoProducto;
 }
