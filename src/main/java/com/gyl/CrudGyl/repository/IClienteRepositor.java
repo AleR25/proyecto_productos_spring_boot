@@ -1,13 +1,13 @@
 package com.gyl.CrudGyl.repository;
 
-import com.gyl.CrudGyl.entity.Producto;
+import com.gyl.CrudGyl.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface IProductoRepositor extends JpaRepository<Producto, Long>
+public interface IClienteRepositor extends JpaRepository<Cliente,Long>
 {
-    List<Producto> findByNombre(String nombre);
+    List<Cliente> findByNombre(String nombre);
 }

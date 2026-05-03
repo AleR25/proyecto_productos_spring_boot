@@ -1,5 +1,8 @@
 package com.gyl.CrudGyl.service.impl;
 
+import com.gyl.CrudGyl.entity.TipoProducto;
+import com.gyl.CrudGyl.mapper.TipoProductoMapper;
+import com.gyl.CrudGyl.repository.ITipoProductoRepositor;
 import com.gyl.CrudGyl.service.IProductoService;
 import com.gyl.CrudGyl.dto.ProductoRequestDto;
 import com.gyl.CrudGyl.dto.ProductoResponseDto;
@@ -8,6 +11,7 @@ import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.repository.IProductoRepositor;
 import com.gyl.CrudGyl.service.ITipoProductoService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +20,19 @@ import java.util.List;
 public class ProductoServiceImpl implements IProductoService
 {
     private IProductoRepositor iproductoRepositor;
+    private final ITipoProductoService iTipoProductoService;
 
-    public ProductoServiceImpl(IProductoRepositor iproductoRepositor)
+    public ProductoServiceImpl
+            (
+                    IProductoRepositor iproductoRepositor,
+                    ITipoProductoService iTipoProductoService
+            )
     {
         this.iproductoRepositor = iproductoRepositor;
+        this.iTipoProductoService = iTipoProductoService;
     }
 
+    @Transactional
     @Override
     public ProductoResponseDto crear(ProductoRequestDto dto)
     {
@@ -65,7 +76,7 @@ public class ProductoServiceImpl implements IProductoService
     }
 
     @Override
-    public ProductoResponseDto cambioDeEstado(Long id)
+    public ProductoResponseDto darDeBaja(Long id)
     {
         Producto producto = iproductoRepositor.findById(id)
                 .orElseThrow(() -> new RecursoNoEncontradoException(

@@ -11,8 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/productos")
-public class ProductoController {
-
+public class ProductoController
+{
     private final IProductoService iProductoService;
 
     public ProductoController(IProductoService iProductoService)
@@ -48,9 +48,9 @@ public class ProductoController {
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/{id}")
-    public ProductoResponseDto cambioDeEstado(@PathVariable Long id)
+    public ProductoResponseDto darDeBaja(@PathVariable Long id)
     {
-        return iProductoService.cambioDeEstado(id);
+        return iProductoService.darDeBaja(id);
     }
 
     @GetMapping("/buscar")

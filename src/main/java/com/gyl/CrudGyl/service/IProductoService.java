@@ -15,7 +15,7 @@ public interface IProductoService
 
     ProductoResponseDto actualizar(Long id, ProductoRequestDto dto);
 
-    ProductoResponseDto cambioDeEstado(Long id);
+    ProductoResponseDto darDeBaja(Long id);
 
     List<ProductoResponseDto> busquedaNombre(String nombre);
 }

@@ -66,6 +66,7 @@ public class TipoProductoServiceImpl implements ITipoProductoService
         return TipoProductoMapper.toResponseDto(guardado);
     }
 
+    //Cmbiar de estado si hace falta, POSIBLE MODIFICACION
     @Override
     public TipoProductoResponseDto cambioDeEstado(Long id) {
         TipoProducto tipoProducto = iTipoProductoRepositor.findById(id)

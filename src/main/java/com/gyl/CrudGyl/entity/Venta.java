@@ -5,38 +5,36 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.cfg.Compatibility;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="producto")
+@Table(name="venta")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Producto
+public class Venta
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @Column(nullable = false, length = 100)
-    private String nombre;
+    private String fechaVenta;
 
     @Column(nullable = false)
-    private Double precio;
-
-    @Column(nullable = false)
-    private Integer stock;
+    private double total;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo_producto")
-    private TipoProducto tipoProducto;
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "venta")
     private List<DetalleVenta> detalleVentas = new ArrayList<>();
 
     @Column(nullable = false)
-    private boolean estadoProducto;
+    private String estadoVenta;
 }

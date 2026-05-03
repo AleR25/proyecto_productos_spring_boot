@@ -6,10 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="tipo_producto")
+@Table(name="tipoProducto")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,7 +19,7 @@ public class TipoProducto
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idTipoProducto;
+    private Long id;
 
     @Column(nullable = false, length = 100)
     private String nombre;
@@ -26,8 +27,8 @@ public class TipoProducto
     @Column(nullable = false, length = 200)
     private String descripcion;
 
-    @OneToMany(mappedBy = "idProducto")
-    private List<Producto> productos;
+    @OneToMany(mappedBy = "tipoProducto")
+    private List<Producto> productos = new ArrayList<>();
 
     @Column(nullable = false)
     private Boolean estadoTipoProducto;

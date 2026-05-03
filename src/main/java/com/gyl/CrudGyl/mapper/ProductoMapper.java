@@ -27,6 +27,7 @@ public class ProductoMapper
                 producto.getNombre(),
                 producto.getPrecio(),
                 producto.getStock(),
+                producto.getTipoProducto(),
                 producto.isEstadoProducto()
         );
     }
