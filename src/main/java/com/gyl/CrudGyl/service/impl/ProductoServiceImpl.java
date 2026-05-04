@@ -26,32 +26,25 @@ public class ProductoServiceImpl implements IProductoService
         this.tipoProductoService = tipoProductoService;
     }
 
-//    public ProductoServiceImpl(IProductoRepositor iproductoRepositor)
-//    {
-//        this.iproductoRepositor = iproductoRepositor;
-//    }
-
     @Override
     @Transactional
     public ProductoResponseDto crear(ProductoRequestDto dto)
     {
+        boolean existe = tipoProductoService.existePorId(dto.tipoProductoId());
+
+        if (!existe)
+        {
+            throw new RecursoNoEncontradoException("El tipo de producto no existe");
+        }
+
         Producto producto = ProductoMapper.toEntity(dto);
+        producto.setEstadoProducto(true);
         producto.setTipoProducto(tipoProductoService.buscarPorId(dto.tipoProductoId()));
 
         Producto guardado = iproductoRepositor.save(producto);
 
         return ProductoMapper.toResponseDto(guardado);
     }
-
-//    @Transactional
-//    @Override
-//    public ProductoResponseDto crear(ProductoRequestDto dto)
-//    {
-//        Producto producto = ProductoMapper.toEntity(dto);
-//        Producto guardado = iproductoRepositor.save(producto);
-//
-//        return ProductoMapper.toResponseDto(guardado);
-//    }
 
     @Override
     public List<ProductoResponseDto> listar()
@@ -81,23 +74,41 @@ public class ProductoServiceImpl implements IProductoService
                 ));
 
         ProductoMapper.updateEntity(producto, dto);
+
+        if (tipoProductoService.existePorId(dto.tipoProductoId()))
+        {
+            producto.setTipoProducto(tipoProductoService.buscarPorId(dto.tipoProductoId()));
+        }
+
         Producto guardado = iproductoRepositor.save(producto);
 
         return ProductoMapper.toResponseDto(guardado);
     }
 
+//    @Override
+//    public ProductoResponseDto actualizar(Long id, ProductoRequestDto dto)
+//    {
+//        Producto producto = iproductoRepositor.findById(id)
+//                .orElseThrow(() -> new RecursoNoEncontradoException(
+//                        "No se encontró el ID " + id
+//                ));
+//
+//        ProductoMapper.updateEntity(producto, dto);
+//        Producto guardado = iproductoRepositor.save(producto);
+//
+//        return ProductoMapper.toResponseDto(guardado);
+//    }
+
     @Override
     public ProductoResponseDto darDeBaja(Long id)
     {
-        Producto producto = iproductoRepositor.findById(id)
-                .orElseThrow(() -> new RecursoNoEncontradoException(
-                        "No se encontró el id " + id
-                ));
+        return cambioDeEstado(id, false);
+    }
 
-        producto.setEstadoProducto(false);
-        iproductoRepositor.save(producto);
-
-        return ProductoMapper.toResponseDto(producto);
+    @Override
+    public ProductoResponseDto darDeAlta(Long id)
+    {
+        return cambioDeEstado(id, true);
     }
 
     @Override
@@ -106,5 +117,18 @@ public class ProductoServiceImpl implements IProductoService
                 .stream()
                 .map(ProductoMapper::toResponseDto)
                 .toList();
+    }
+
+    private ProductoResponseDto cambioDeEstado(Long id, boolean activo)
+    {
+        Producto producto = iproductoRepositor.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException(
+                        "No se encontró el id " + id
+                ));
+
+        producto.setEstadoProducto(activo);
+        iproductoRepositor.save(producto);
+
+        return ProductoMapper.toResponseDto(producto);
     }
 }

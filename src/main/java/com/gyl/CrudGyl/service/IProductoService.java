@@ -17,5 +17,7 @@ public interface IProductoService
 
     ProductoResponseDto darDeBaja(Long id);
 
+    ProductoResponseDto darDeAlta(Long id);
+
     List<ProductoResponseDto> busquedaNombre(String nombre);
 }

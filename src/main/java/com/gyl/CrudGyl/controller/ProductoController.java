@@ -47,10 +47,17 @@ public class ProductoController
     };
 
     @ResponseStatus(HttpStatus.OK)
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/baja")
     public ProductoResponseDto darDeBaja(@PathVariable Long id)
     {
         return iProductoService.darDeBaja(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/{id}/alta")
+    public ProductoResponseDto darDeAlta(@PathVariable Long id)
+    {
+        return iProductoService.darDeAlta(id);
     }
 
     @GetMapping("/buscar")

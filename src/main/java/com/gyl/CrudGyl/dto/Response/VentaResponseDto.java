@@ -11,7 +11,7 @@ public record VentaResponseDto
                 Long id,
                 LocalDate fechaVenta,
                 Double total,
-                Cliente cliente,
+                ClienteResponseDto cliente,
                 List<DetalleVenta> detalleVentas,
                 String estadoVenta
         )

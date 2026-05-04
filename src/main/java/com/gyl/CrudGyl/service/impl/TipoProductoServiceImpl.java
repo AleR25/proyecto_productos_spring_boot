@@ -22,7 +22,6 @@ public class TipoProductoServiceImpl implements ITipoProductoService
         this.iTipoProductoRepositor = iTipoProductoRepositor;
     }
 
-    @Override
     public TipoProducto buscarPorId(Long id) {
         return iTipoProductoRepositor.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("El tipo de producto con ID " + id + " no existe."));
@@ -97,5 +96,10 @@ public class TipoProductoServiceImpl implements ITipoProductoService
                 .stream()
                 .map(TipoProductoMapper::toResponseDto)
                 .toList();
+    }
+
+    public boolean existePorId(Long id)
+    {
+        return iTipoProductoRepositor.existsById(id);
     }
 }

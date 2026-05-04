@@ -14,6 +14,8 @@ public interface ITipoProductoService
 
     TipoProducto buscarPorId(Long id);
 
+    boolean existePorId(Long id);
+
     TipoProductoResponseDto buscarPorIdTipo(Long id);
 
     TipoProductoResponseDto actualizar(Long id, TipoProductoRequestDto dto);

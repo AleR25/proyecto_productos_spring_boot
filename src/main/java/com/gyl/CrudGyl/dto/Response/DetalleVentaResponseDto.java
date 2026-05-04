@@ -9,8 +9,8 @@ public record DetalleVentaResponseDto
                 int cantidad,
                 double precioUnitario,
                 Double subtotal,
-                Venta venta,
-                Producto producto
+                VentaResponseDto venta,
+                ProductoResponseDto producto
         )
 {
 

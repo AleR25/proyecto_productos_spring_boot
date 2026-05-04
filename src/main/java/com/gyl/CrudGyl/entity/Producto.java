@@ -39,7 +39,4 @@ public class Producto
 
     @Column(nullable = false)
     private boolean estadoProducto;
-
-    public void setCan() {
-    }
 }
