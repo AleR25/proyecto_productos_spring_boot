@@ -8,7 +8,7 @@ public record ProductoResponseDto
                 String nombre,
                 Double precio,
                 Integer stock,
-                TipoProducto tipoProducto,
+                TipoProductoResponseDto tipoProducto,
                 Boolean estadoProducto
         )
 {

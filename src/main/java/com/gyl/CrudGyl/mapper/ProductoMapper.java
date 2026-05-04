@@ -20,6 +20,7 @@ public class ProductoMapper
         return producto;
     }
 
+    //como estoy usando un Mapper estoy realizando un movimiento horizontal
     public static ProductoResponseDto toResponseDto(Producto producto)
     {
         return new ProductoResponseDto(
@@ -27,7 +28,7 @@ public class ProductoMapper
                 producto.getNombre(),
                 producto.getPrecio(),
                 producto.getStock(),
-                producto.getTipoProducto(),
+                TipoProductoMapper.toResponseDto(producto.getTipoProducto()),
                 producto.isEstadoProducto()
         );
     }

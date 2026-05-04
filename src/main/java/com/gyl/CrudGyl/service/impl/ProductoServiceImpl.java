@@ -19,10 +19,17 @@ public class ProductoServiceImpl implements IProductoService
     private ITipoProductoService tipoProductoService;
     private IProductoRepositor iproductoRepositor;
 
-    public ProductoServiceImpl(IProductoRepositor iproductoRepositor)
+    public ProductoServiceImpl(IProductoRepositor iproductoRepositor,
+                               ITipoProductoService tipoProductoService)
     {
         this.iproductoRepositor = iproductoRepositor;
+        this.tipoProductoService = tipoProductoService;
     }
+
+//    public ProductoServiceImpl(IProductoRepositor iproductoRepositor)
+//    {
+//        this.iproductoRepositor = iproductoRepositor;
+//    }
 
     @Override
     @Transactional
