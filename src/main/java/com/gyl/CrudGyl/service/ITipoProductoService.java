@@ -1,7 +1,8 @@
 package com.gyl.CrudGyl.service;
 
-import com.gyl.CrudGyl.dto.TipoProductoRequestDto;
-import com.gyl.CrudGyl.dto.TipoProductoResponseDto;
+import com.gyl.CrudGyl.dto.Resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.Response.TipoProductoResponseDto;
+import com.gyl.CrudGyl.entity.TipoProducto;
 
 import java.util.List;
 
@@ -11,7 +12,9 @@ public interface ITipoProductoService
 
     List<TipoProductoResponseDto> listar();
 
-    TipoProductoResponseDto buscarPorId(Long id);
+    TipoProducto buscarPorId(Long id);
+
+    TipoProductoResponseDto buscarPorIdTipo(Long id);
 
     TipoProductoResponseDto actualizar(Long id, TipoProductoRequestDto dto);
 

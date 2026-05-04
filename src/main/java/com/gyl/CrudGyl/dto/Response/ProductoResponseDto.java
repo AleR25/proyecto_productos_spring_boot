@@ -1,4 +1,4 @@
-package com.gyl.CrudGyl.dto;
+package com.gyl.CrudGyl.dto.Response;
 
 import com.gyl.CrudGyl.entity.TipoProducto;
 

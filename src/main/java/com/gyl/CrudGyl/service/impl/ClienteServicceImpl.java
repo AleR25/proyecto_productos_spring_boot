@@ -1,7 +1,7 @@
 package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.dto.ClienteRequestDto;
-import com.gyl.CrudGyl.dto.ClienteResponseDto;
+import com.gyl.CrudGyl.dto.Resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.Response.ClienteResponseDto;
 import com.gyl.CrudGyl.entity.Cliente;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ClienteMapper;

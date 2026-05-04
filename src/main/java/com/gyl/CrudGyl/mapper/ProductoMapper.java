@@ -1,7 +1,7 @@
 package com.gyl.CrudGyl.mapper;
 
-import com.gyl.CrudGyl.dto.ProductoRequestDto;
-import com.gyl.CrudGyl.dto.ProductoResponseDto;
+import com.gyl.CrudGyl.dto.Resquest.ProductoRequestDto;
+import com.gyl.CrudGyl.dto.Response.ProductoResponseDto;
 import com.gyl.CrudGyl.entity.Producto;
 
 public class ProductoMapper
@@ -23,7 +23,7 @@ public class ProductoMapper
     public static ProductoResponseDto toResponseDto(Producto producto)
     {
         return new ProductoResponseDto(
-                producto.getIdProducto(),
+                producto.getId(),
                 producto.getNombre(),
                 producto.getPrecio(),
                 producto.getStock(),

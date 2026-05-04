@@ -1,8 +1,8 @@
-package com.gyl.CrudGyl.dto;
+package com.gyl.CrudGyl.dto.Response;
 
 public record ClienteResponseDto
         (
-                long idCliente,
+                long id,
                 String nombre,
                 String apellido,
                 String correo,

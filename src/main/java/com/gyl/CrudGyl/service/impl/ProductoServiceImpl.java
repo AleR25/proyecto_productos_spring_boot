@@ -1,11 +1,8 @@
 package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.entity.TipoProducto;
-import com.gyl.CrudGyl.mapper.TipoProductoMapper;
-import com.gyl.CrudGyl.repository.ITipoProductoRepositor;
 import com.gyl.CrudGyl.service.IProductoService;
-import com.gyl.CrudGyl.dto.ProductoRequestDto;
-import com.gyl.CrudGyl.dto.ProductoResponseDto;
+import com.gyl.CrudGyl.dto.Resquest.ProductoRequestDto;
+import com.gyl.CrudGyl.dto.Response.ProductoResponseDto;
 import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ProductoMapper;
@@ -19,28 +16,35 @@ import java.util.List;
 @Service
 public class ProductoServiceImpl implements IProductoService
 {
+    private ITipoProductoService tipoProductoService;
     private IProductoRepositor iproductoRepositor;
-    private final ITipoProductoService iTipoProductoService;
 
-    public ProductoServiceImpl
-            (
-                    IProductoRepositor iproductoRepositor,
-                    ITipoProductoService iTipoProductoService
-            )
+    public ProductoServiceImpl(IProductoRepositor iproductoRepositor)
     {
         this.iproductoRepositor = iproductoRepositor;
-        this.iTipoProductoService = iTipoProductoService;
     }
 
-    @Transactional
     @Override
+    @Transactional
     public ProductoResponseDto crear(ProductoRequestDto dto)
     {
         Producto producto = ProductoMapper.toEntity(dto);
+        producto.setTipoProducto(tipoProductoService.buscarPorId(dto.tipoProductoId()));
+
         Producto guardado = iproductoRepositor.save(producto);
 
         return ProductoMapper.toResponseDto(guardado);
     }
+
+//    @Transactional
+//    @Override
+//    public ProductoResponseDto crear(ProductoRequestDto dto)
+//    {
+//        Producto producto = ProductoMapper.toEntity(dto);
+//        Producto guardado = iproductoRepositor.save(producto);
+//
+//        return ProductoMapper.toResponseDto(guardado);
+//    }
 
     @Override
     public List<ProductoResponseDto> listar()

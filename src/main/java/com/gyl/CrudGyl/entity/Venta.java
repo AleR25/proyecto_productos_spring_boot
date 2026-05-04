@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.cfg.Compatibility;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Venta
     private long id;
 
     @Column(nullable = false, length = 100)
-    private String fechaVenta;
+    private LocalDate fechaVenta;
 
     @Column(nullable = false)
     private double total;

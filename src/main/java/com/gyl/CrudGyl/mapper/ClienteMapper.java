@@ -1,7 +1,7 @@
 package com.gyl.CrudGyl.mapper;
 
-import com.gyl.CrudGyl.dto.ClienteRequestDto;
-import com.gyl.CrudGyl.dto.ClienteResponseDto;
+import com.gyl.CrudGyl.dto.Resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.Response.ClienteResponseDto;
 import com.gyl.CrudGyl.entity.Cliente;
 
 public class ClienteMapper
@@ -28,7 +28,7 @@ public class ClienteMapper
     {
         return new ClienteResponseDto
                 (
-                        cliente.getIdCliente(),
+                        cliente.getId(),
                         cliente.getNombre(),
                         cliente.getApellido(),
                         cliente.getCorreo(),

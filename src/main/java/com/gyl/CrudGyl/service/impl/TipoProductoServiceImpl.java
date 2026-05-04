@@ -1,14 +1,13 @@
 package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.dto.TipoProductoRequestDto;
-import com.gyl.CrudGyl.dto.TipoProductoResponseDto;
-import com.gyl.CrudGyl.entity.Producto;
+import com.gyl.CrudGyl.dto.Resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.Response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.entity.TipoProducto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
-import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.mapper.TipoProductoMapper;
 import com.gyl.CrudGyl.repository.ITipoProductoRepositor;
 import com.gyl.CrudGyl.service.ITipoProductoService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +20,17 @@ public class TipoProductoServiceImpl implements ITipoProductoService
     public TipoProductoServiceImpl(ITipoProductoRepositor iTipoProductoRepositor)
     {
         this.iTipoProductoRepositor = iTipoProductoRepositor;
+    }
+
+    @Override
+    public TipoProducto buscarPorId(Long id) {
+        return iTipoProductoRepositor.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("El tipo de producto con ID " + id + " no existe."));
+    }
+
+    @Override
+    public TipoProductoResponseDto buscarPorIdTipo(Long id) {
+        return TipoProductoMapper.toResponseDto(buscarPorId(id));
     }
 
     @Override
@@ -43,15 +53,15 @@ public class TipoProductoServiceImpl implements ITipoProductoService
                 .toList();
     }
 
-    @Override
-    public TipoProductoResponseDto buscarPorId(Long id) {
-        return iTipoProductoRepositor.findById(id)
-                .map(TipoProductoMapper::toResponseDto)
-                .orElseThrow(() -> new RecursoNoEncontradoException
-                (
-                        "No se encontró el ID " + id
-                ));
-    }
+//    @Override
+//    public TipoProductoResponseDto buscarPorId(Long id) {
+//        return iTipoProductoRepositor.findById(id)
+//                .map(TipoProductoMapper::toResponseDto)
+//                .orElseThrow(() -> new RecursoNoEncontradoException
+//                (
+//                        "No se encontró el ID " + id
+//                ));
+//    }
 
     @Override
     public TipoProductoResponseDto actualizar(Long id, TipoProductoRequestDto dto) {
@@ -63,6 +73,7 @@ public class TipoProductoServiceImpl implements ITipoProductoService
 
         TipoProductoMapper.updateEntity(tipoProducto, dto);
         TipoProducto guardado = iTipoProductoRepositor.save(tipoProducto);
+
         return TipoProductoMapper.toResponseDto(guardado);
     }
 

@@ -1,7 +1,7 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.TipoProductoRequestDto;
-import com.gyl.CrudGyl.dto.TipoProductoResponseDto;
+import com.gyl.CrudGyl.dto.Resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.Response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.service.ITipoProductoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -34,9 +34,9 @@ public class TipoProductoController
     }
 
     @GetMapping("/{id}")
-    public TipoProductoResponseDto buscarPorId(@PathVariable Long id)
+    public TipoProductoResponseDto buscarPorIdTipo(@PathVariable Long id)
     {
-        return iTipoProductoService.buscarPorId(id);
+        return iTipoProductoService.buscarPorIdTipo(id);
     };
 
     @PutMapping("/{id}")

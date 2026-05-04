@@ -1,8 +1,7 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.ClienteRequestDto;
-import com.gyl.CrudGyl.dto.ClienteResponseDto;
-import com.gyl.CrudGyl.dto.ProductoRequestDto;
+import com.gyl.CrudGyl.dto.Resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.Response.ClienteResponseDto;
 import com.gyl.CrudGyl.service.IClienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/clientes")
+@RequestMapping("/api/cliente")
 public class ClienteController
 {
     private final IClienteService iClienteService;
