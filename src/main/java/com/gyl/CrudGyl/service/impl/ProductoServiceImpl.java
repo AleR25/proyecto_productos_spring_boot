@@ -85,20 +85,6 @@ public class ProductoServiceImpl implements IProductoService
         return ProductoMapper.toResponseDto(guardado);
     }
 
-//    @Override
-//    public ProductoResponseDto actualizar(Long id, ProductoRequestDto dto)
-//    {
-//        Producto producto = iproductoRepositor.findById(id)
-//                .orElseThrow(() -> new RecursoNoEncontradoException(
-//                        "No se encontró el ID " + id
-//                ));
-//
-//        ProductoMapper.updateEntity(producto, dto);
-//        Producto guardado = iproductoRepositor.save(producto);
-//
-//        return ProductoMapper.toResponseDto(guardado);
-//    }
-
     @Override
     public ProductoResponseDto darDeBaja(Long id)
     {

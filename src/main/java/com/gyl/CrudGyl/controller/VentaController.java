@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/venta")
 public class VentaController
@@ -33,5 +35,11 @@ public class VentaController
     )
     {
         return iVentaService.cambiarEstado(id, estado);
+    }
+
+    @GetMapping
+    public List<VentaResponseDto> listar()
+    {
+        return iVentaService.listar();
     }
 }

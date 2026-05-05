@@ -9,6 +9,7 @@ import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.entity.Venta;
 import com.gyl.CrudGyl.enumP.EstadoVenta;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
+import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.mapper.VentaMapper;
 import com.gyl.CrudGyl.repository.IClienteRepositor;
 import com.gyl.CrudGyl.repository.IProductoRepositor;
@@ -97,8 +98,6 @@ public class VentaServiceImpl implements IVentaService
             iProductoRepositor.save(producto);
         }
 
-
-
         venta.setTotal(total);
 
         Venta guardada = iVentaRepositor.save(venta);
@@ -125,5 +124,22 @@ public class VentaServiceImpl implements IVentaService
         Venta guardada = iVentaRepositor.save(venta);
 
         return VentaMapper.toResponseDto(guardada);
+    }
+
+    public List<VentaResponseDto> listar()
+    {
+        return iVentaRepositor.findAll()
+                .stream()
+                .map(VentaMapper::toResponseDto)
+                .toList();
+    }
+
+    public VentaResponseDto BuscarPorId(Long id)
+    {
+        return iVentaRepositor.findById(id)
+                .map(VentaMapper::toResponseDto)
+                .orElseThrow(() -> new RecursoNoEncontradoException(
+                        "No se encontró el ID " + id
+                ));
     }
 }
