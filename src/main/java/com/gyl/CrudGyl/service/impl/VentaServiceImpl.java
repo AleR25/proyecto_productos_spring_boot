@@ -134,7 +134,7 @@ public class VentaServiceImpl implements IVentaService
                 .toList();
     }
 
-    public VentaResponseDto BuscarPorId(Long id)
+    public VentaResponseDto buscarPorId(Long id)
     {
         return iVentaRepositor.findById(id)
                 .map(VentaMapper::toResponseDto)

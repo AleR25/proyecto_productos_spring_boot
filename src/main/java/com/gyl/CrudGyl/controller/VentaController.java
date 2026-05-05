@@ -42,4 +42,10 @@ public class VentaController
     {
         return iVentaService.listar();
     }
+
+    @GetMapping("/{id}")
+    public VentaResponseDto buscarPorId(@PathVariable Long id)
+    {
+        return iVentaService.buscarPorId(id);
+    }
 }

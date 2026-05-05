@@ -14,5 +14,5 @@ public interface IVentaService
 
     List<VentaResponseDto> listar();
 
-    VentaResponseDto BuscarPorId(Long id);
+    VentaResponseDto buscarPorId(Long id);
 }
