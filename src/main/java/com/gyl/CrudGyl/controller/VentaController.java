@@ -2,6 +2,7 @@ package com.gyl.CrudGyl.controller;
 
 import com.gyl.CrudGyl.dto.Response.VentaResponseDto;
 import com.gyl.CrudGyl.dto.Resquest.VentaRequestDto;
+import com.gyl.CrudGyl.enumP.EstadoVenta;
 import com.gyl.CrudGyl.service.IVentaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -23,5 +24,14 @@ public class VentaController
     public VentaResponseDto crear(@Valid @RequestBody VentaRequestDto dto)
     {
         return iVentaService.crear(dto);
+    }
+
+    @PatchMapping("/{id}/estado")
+    public VentaResponseDto cambiarEstado(
+            @PathVariable Long id,
+            @RequestParam EstadoVenta estado
+    )
+    {
+        return iVentaService.cambiarEstado(id, estado);
     }
 }

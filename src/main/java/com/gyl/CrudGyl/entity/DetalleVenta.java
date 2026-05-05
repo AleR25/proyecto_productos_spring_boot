@@ -30,7 +30,7 @@ public class DetalleVenta
     private BigDecimal subtotal;
 
     @ManyToOne
-    @JoinColumn(name = "id_venta")
+    @JoinColumn(name = "id_venta", nullable = false)
     private Venta venta;
 
     @ManyToOne

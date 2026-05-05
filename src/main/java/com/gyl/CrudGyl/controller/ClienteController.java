@@ -27,7 +27,7 @@ public class ClienteController
         return iClienteService.crear(dto);
     }
 
-    @PostMapping("/listaclientes")
+    @GetMapping("/listaclientes")
     public List<ClienteResponseDto> listar()
     {
         return iClienteService.listar();

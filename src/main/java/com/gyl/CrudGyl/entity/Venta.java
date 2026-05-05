@@ -40,4 +40,10 @@ public class Venta
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoVenta estadoVenta;
+
+    public void agregarDetalle(DetalleVenta detalle)
+    {
+        this.detalleVentas.add(detalle);
+        detalle.setVenta(this);
+    }
 }

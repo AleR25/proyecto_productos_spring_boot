@@ -43,13 +43,19 @@ public class VentaServiceImpl implements IVentaService
         venta.setFechaVenta(LocalDate.now());
         venta.setEstadoVenta(EstadoVenta.PENDIENTE);
 
-        List<DetalleVenta> detalles = new ArrayList<>();
         BigDecimal total = BigDecimal.ZERO;
 
         Cliente cliente = iClienteRepositor.findById(dto.clienteId())
                 .orElseThrow(() -> new RecursoNoEncontradoException(
                         "Cliente no encontrado ID: " + dto.clienteId()
                 ));
+
+        if (!cliente.isEstadoCliente())
+        {
+            throw new IllegalStateException(
+                    "El cliente está inactivo y no puede realizar compras"
+            );
+        }
 
         venta.setCliente(cliente);
 
@@ -82,16 +88,39 @@ public class VentaServiceImpl implements IVentaService
                     .multiply(BigDecimal.valueOf(detalleVentaRequestDto.cantidad()));
 
             detalle.setSubtotal(subtotal);
-            detalle.setVenta(venta);
-            detalles.add(detalle);
+
+            venta.agregarDetalle(detalle);
+
             total = total.add(subtotal);
 
             producto.setStock(producto.getStock() - detalleVentaRequestDto.cantidad());
             iProductoRepositor.save(producto);
         }
 
-        venta.setDetalleVentas(detalles);
+
+
         venta.setTotal(total);
+
+        Venta guardada = iVentaRepositor.save(venta);
+
+        return VentaMapper.toResponseDto(guardada);
+    }
+
+    @Override
+    @Transactional
+    public VentaResponseDto cambiarEstado(Long id, EstadoVenta nuevoEstado)
+    {
+        Venta venta = iVentaRepositor.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException(
+                        "Venta no encontrada ID: " + id
+                ));
+
+        if (venta.getEstadoVenta() == EstadoVenta.CANCELADA)
+        {
+            throw new IllegalStateException("No se puede modificar una venta cancelada");
+        }
+
+        venta.setEstadoVenta(nuevoEstado);
 
         Venta guardada = iVentaRepositor.save(venta);
 
