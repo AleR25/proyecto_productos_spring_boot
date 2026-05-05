@@ -1,16 +1,15 @@
 package com.gyl.CrudGyl.dto.Resquest;
 
-import jakarta.validation.constraints.NotBlank;
-
-import java.time.LocalDate;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 public record VentaRequestDto
         (
-                @NotBlank(message = "La fecha de venta tiene que ser obligatoria")
-                LocalDate fechaVenta,
+                @NotNull(message = "el ID del cliente es obligatorio")
                 long clienteId,
-                String estadoVenta,
+
+                @NotEmpty(message = "La venta debe tener por lo menos un detalle")
                 List<DetalleVentaRequestDto> detalles
         )
 {

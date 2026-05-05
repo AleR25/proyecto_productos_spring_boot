@@ -13,24 +13,22 @@ public class VentaMapper
 
     public static Venta toEntity(VentaRequestDto dto) {
         Venta venta = new Venta();
-
-        venta.setFechaVenta(dto.fechaVenta());
-        venta.setEstadoVenta(dto.estadoVenta());
-
         return venta;
     }
 
     public static VentaResponseDto toResponseDto(Venta venta)
     {
-        return new VentaResponseDto
-                (
-                        venta.getId(),
-                        venta.getFechaVenta(),
-                        venta.getTotal(),
-                        venta.getCliente(),
-                        venta.getDetalleVentas(),
-                        venta.getEstadoVenta()
-                );
+        return new VentaResponseDto(
+                venta.getId(),
+                venta.getFechaVenta(),
+                venta.getTotal(),
+                ClienteMapper.toResponseDto(venta.getCliente()),
+                venta.getDetalleVentas()
+                        .stream()
+                        .map(DetalleVentaMapper::toResponseDto)
+                        .toList(),
+                venta.getEstadoVenta()
+        );
     }
 
 }

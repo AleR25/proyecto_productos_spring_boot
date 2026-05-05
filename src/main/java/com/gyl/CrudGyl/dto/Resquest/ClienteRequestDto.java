@@ -1,5 +1,6 @@
 package com.gyl.CrudGyl.dto.Resquest;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,7 +12,7 @@ public record ClienteRequestDto
                 @NotBlank(message = "El apellido no puede ser vacío")
                 String apellido,
 
-                @NotBlank(message = "El correo no puede ser vacío")
+                @Email
                 String correo,
 
                 @NotBlank(message = "El telefono no puede ser vacío")

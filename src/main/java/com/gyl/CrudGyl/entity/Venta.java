@@ -1,12 +1,13 @@
 package com.gyl.CrudGyl.entity;
 
+import com.gyl.CrudGyl.enumP.EstadoVenta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.cfg.Compatibility;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,21 +22,22 @@ public class Venta
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private LocalDate fechaVenta;
 
     @Column(nullable = false)
-    private double total;
+    private BigDecimal total;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleVenta> detalleVentas = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String estadoVenta;
+    private EstadoVenta estadoVenta;
 }

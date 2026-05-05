@@ -3,7 +3,6 @@ package com.gyl.CrudGyl.mapper;
 import com.gyl.CrudGyl.dto.Response.DetalleVentaResponseDto;
 import com.gyl.CrudGyl.dto.Resquest.DetalleVentaRequestDto;
 import com.gyl.CrudGyl.entity.DetalleVenta;
-import com.gyl.CrudGyl.entity.Producto;
 
 public class DetalleVentaMapper
 {
@@ -25,8 +24,7 @@ public class DetalleVentaMapper
                         detalleVenta.getCantidad(),
                         detalleVenta.getPrecioUnitario(),
                         detalleVenta.getSubtotal(),
-                        detalleVenta.getVenta(),
-                        detalleVenta.getProducto()
+                        detalleVenta.getProducto().getNombre()
                 );
     }
 

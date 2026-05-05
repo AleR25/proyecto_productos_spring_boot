@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
-@Table(name="detallesVenta")
+@Table(name="detalle_venta")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,16 +18,16 @@ public class DetalleVenta
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private int cantidad;
 
     @Column(nullable = false)
-    private double precioUnitario;
+    private BigDecimal precioUnitario;
 
     @Column(nullable = false)
-    private double subtotal;
+    private BigDecimal subtotal;
 
     @ManyToOne
     @JoinColumn(name = "id_venta")

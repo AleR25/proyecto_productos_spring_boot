@@ -1,8 +1,8 @@
 package com.gyl.CrudGyl.dto.Response;
 
-import com.gyl.CrudGyl.entity.Cliente;
-import com.gyl.CrudGyl.entity.DetalleVenta;
+import com.gyl.CrudGyl.enumP.EstadoVenta;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,10 +10,10 @@ public record VentaResponseDto
         (
                 Long id,
                 LocalDate fechaVenta,
-                Double total,
+                BigDecimal total,
                 ClienteResponseDto cliente,
-                List<DetalleVenta> detalleVentas,
-                String estadoVenta
+                List<DetalleVentaResponseDto> detalleVentas,
+                EstadoVenta estadoVenta
         )
 {
 
