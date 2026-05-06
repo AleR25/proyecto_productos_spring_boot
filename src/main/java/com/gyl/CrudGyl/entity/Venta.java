@@ -34,16 +34,10 @@ public class Venta
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "venta", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<DetalleVenta> detalleVentas = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoVenta estadoVenta;
-
-    public void agregarDetalle(DetalleVenta detalle)
-    {
-        this.detalleVentas.add(detalle);
-        detalle.setVenta(this);
-    }
 }

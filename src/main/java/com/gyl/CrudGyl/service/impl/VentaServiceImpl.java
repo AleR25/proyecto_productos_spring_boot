@@ -90,7 +90,7 @@ public class VentaServiceImpl implements IVentaService
 
             detalle.setSubtotal(subtotal);
 
-            venta.agregarDetalle(detalle);
+            vincularDetalle(venta, detalle);
 
             total = total.add(subtotal);
 
@@ -142,4 +142,11 @@ public class VentaServiceImpl implements IVentaService
                         "No se encontró el ID " + id
                 ));
     }
+
+    private void vincularDetalle(Venta venta, DetalleVenta detalle) {
+        detalle.setVenta(venta);
+        venta.getDetalleVentas().add(detalle);
+    }
+
 }
+

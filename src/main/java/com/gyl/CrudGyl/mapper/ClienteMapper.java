@@ -8,8 +8,6 @@ public class ClienteMapper
 {
     private ClienteMapper() {}
 
-    //El estado del cliente siempre va a ser activo
-    //al crearse la cuenta
     public static Cliente toEntity(ClienteRequestDto dto)
     {
         Cliente cliente = new Cliente();
@@ -38,9 +36,6 @@ public class ClienteMapper
                 );
     }
 
-    //No creo que se tenga que actualizar completamente
-    //el cliente, posiblemente se tenga que actualizar
-    //parcialmente.
     public static void updateEntity(Cliente cliente, ClienteRequestDto dto)
     {
         cliente.setNombre(dto.nombre());

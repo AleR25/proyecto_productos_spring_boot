@@ -52,16 +52,6 @@ public class TipoProductoServiceImpl implements ITipoProductoService
                 .toList();
     }
 
-//    @Override
-//    public TipoProductoResponseDto buscarPorId(Long id) {
-//        return iTipoProductoRepositor.findById(id)
-//                .map(TipoProductoMapper::toResponseDto)
-//                .orElseThrow(() -> new RecursoNoEncontradoException
-//                (
-//                        "No se encontró el ID " + id
-//                ));
-//    }
-
     @Override
     public TipoProductoResponseDto actualizar(Long id, TipoProductoRequestDto dto) {
         TipoProducto tipoProducto = iTipoProductoRepositor.findById(id)
@@ -76,7 +66,6 @@ public class TipoProductoServiceImpl implements ITipoProductoService
         return TipoProductoMapper.toResponseDto(guardado);
     }
 
-    //Cmbiar de estado si hace falta, POSIBLE MODIFICACION
     @Override
     public TipoProductoResponseDto cambioDeEstado(Long id) {
         TipoProducto tipoProducto = iTipoProductoRepositor.findById(id)

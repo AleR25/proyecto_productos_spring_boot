@@ -21,10 +21,8 @@ public record ProductoRequestDto
             Integer stock,
 
             @NotNull(message = "El ID de tipo producto es obligatotio")
-            Long tipoProductoId,
+            Long tipoProductoId
 
-            @NotNull(message = "El producto tiene que estar activo o no")
-            Boolean estadoProducto
         )
 {
 
