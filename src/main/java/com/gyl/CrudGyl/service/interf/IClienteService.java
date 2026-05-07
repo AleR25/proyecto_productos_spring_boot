@@ -17,5 +17,7 @@ public interface IClienteService
 
     ClienteResponseDto darDeBaja(Long id);
 
+    ClienteResponseDto darDeAlta(Long id);
+
     List<ClienteResponseDto> busquedaNomnbre(String nombre);
 }

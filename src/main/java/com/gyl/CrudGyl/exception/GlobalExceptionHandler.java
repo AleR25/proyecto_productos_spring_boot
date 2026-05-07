@@ -10,6 +10,21 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler
 {
+    /*
+    * PREGUNTAR A HECTOR, tengo entendido que se suele usar
+    * la letra "e" como variable para una excepcion
+    * pero tambien se dice que hay que ser descriptivos con
+    * los nombres de las variables.
+    * ¿Esta bien usar la E o no hay problema si elijo escribir "exception"
+    * */
+    @ExceptionHandler(ClienteInactivoException.class)
+    public ResponseEntity<String> manejarClienteInactivo(ClienteInactivoException exception)
+    {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
+    }
+
     @ExceptionHandler(RecursoNoEncontradoException.class)
     public ResponseEntity<?> handleNotFound(RecursoNoEncontradoException ex)
     {

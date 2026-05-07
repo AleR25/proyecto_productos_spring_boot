@@ -45,11 +45,18 @@ public class ClienteController
         return iClienteService.actualizar(id, dto);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/baja/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ClienteResponseDto darDeBaja(@PathVariable Long id)
     {
         return iClienteService.darDeBaja(id);
+    }
+
+    @PatchMapping("/alta/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ClienteResponseDto darDeAlta(@PathVariable Long id)
+    {
+        return iClienteService.darDeAlta(id);
     }
 
     @GetMapping("/buscar")

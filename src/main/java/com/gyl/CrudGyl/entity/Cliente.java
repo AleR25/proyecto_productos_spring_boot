@@ -19,19 +19,19 @@ public class Cliente
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String nombre;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String apellido;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String correo;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String telefono;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String direccion;
 
     @OneToMany(mappedBy = "cliente")

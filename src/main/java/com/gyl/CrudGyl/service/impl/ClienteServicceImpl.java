@@ -1,10 +1,13 @@
 package com.gyl.CrudGyl.service.impl;
 
+import com.gyl.CrudGyl.dto.response.ProductoResponseDto;
 import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
 import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 import com.gyl.CrudGyl.entity.Cliente;
+import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ClienteMapper;
+import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.repository.IClienteRepositor;
 import com.gyl.CrudGyl.service.interf.IClienteService;
 import org.springframework.stereotype.Service;
@@ -63,7 +66,12 @@ public class ClienteServicceImpl implements IClienteService
 
     @Override
     public ClienteResponseDto darDeBaja(Long id) {
-        return null;
+        return cambioDeEstado(id, false);
+    }
+
+    @Override
+    public ClienteResponseDto darDeAlta(Long id) {
+        return cambioDeEstado(id, true);
     }
 
     @Override
@@ -72,5 +80,18 @@ public class ClienteServicceImpl implements IClienteService
                 .stream()
                 .map(ClienteMapper::toResponseDto)
                 .toList();
+    }
+
+    private ClienteResponseDto cambioDeEstado(Long id, boolean activo)
+    {
+        Cliente cliente = iClienteRepositor.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException(
+                        "No se encontró el id " + id
+                ));
+
+        cliente.setEstadoCliente(activo);
+        iClienteRepositor.save(cliente);
+
+        return ClienteMapper.toResponseDto(cliente);
     }
 }

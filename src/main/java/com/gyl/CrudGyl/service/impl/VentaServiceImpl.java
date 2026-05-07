@@ -8,6 +8,7 @@ import com.gyl.CrudGyl.entity.DetalleVenta;
 import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.entity.Venta;
 import com.gyl.CrudGyl.enumP.EstadoVenta;
+import com.gyl.CrudGyl.exception.ClienteInactivoException;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.VentaMapper;
 import com.gyl.CrudGyl.repository.IClienteRepositor;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VentaServiceImpl implements IVentaService
@@ -49,12 +51,7 @@ public class VentaServiceImpl implements IVentaService
                         "Cliente no encontrado ID: " + dto.clienteId()
                 ));
 
-        if (!cliente.isEstadoCliente())
-        {
-            throw new IllegalStateException(
-                    "El cliente está inactivo y no puede realizar compras"
-            );
-        }
+        validarClienteActivo(cliente);
 
         venta.setCliente(cliente);
 
@@ -144,6 +141,16 @@ public class VentaServiceImpl implements IVentaService
     private void vincularDetalle(Venta venta, DetalleVenta detalle) {
         detalle.setVenta(venta);
         venta.getDetalleVentas().add(detalle);
+    }
+
+    private void validarClienteActivo(Cliente cliente)
+    {
+        if (!cliente.isEstadoCliente())
+        {
+            throw new ClienteInactivoException(
+                    "El cliente está inactivo y no puede realizar compras"
+            );
+        }
     }
 
 }
