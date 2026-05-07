@@ -1,8 +1,8 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.Resquest.ClienteRequestDto;
-import com.gyl.CrudGyl.dto.Response.ClienteResponseDto;
-import com.gyl.CrudGyl.service.IClienteService;
+import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
+import com.gyl.CrudGyl.service.interf.IClienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

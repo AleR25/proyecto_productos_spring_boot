@@ -1,8 +1,8 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.Resquest.TipoProductoRequestDto;
-import com.gyl.CrudGyl.dto.Response.TipoProductoResponseDto;
-import com.gyl.CrudGyl.service.ITipoProductoService;
+import com.gyl.CrudGyl.dto.resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.response.TipoProductoResponseDto;
+import com.gyl.CrudGyl.service.interf.ITipoProductoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

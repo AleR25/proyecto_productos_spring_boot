@@ -1,8 +1,9 @@
-package com.gyl.CrudGyl.dto.Resquest;
+package com.gyl.CrudGyl.dto.resquest;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public record ClienteRequestDto
         (
@@ -19,10 +20,7 @@ public record ClienteRequestDto
                 String telefono,
 
                 @NotBlank(message = "La dirección no puede ser vacía")
-                String direccion,
-
-                @NotNull
-                boolean estadoCliente
+                String direccion
         )
 {
 

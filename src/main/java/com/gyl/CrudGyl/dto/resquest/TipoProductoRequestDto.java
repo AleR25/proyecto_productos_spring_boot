@@ -1,4 +1,4 @@
-package com.gyl.CrudGyl.dto.Resquest;
+package com.gyl.CrudGyl.dto.resquest;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

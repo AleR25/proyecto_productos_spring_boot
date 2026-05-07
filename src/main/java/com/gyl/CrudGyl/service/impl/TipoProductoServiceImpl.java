@@ -1,12 +1,12 @@
 package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.dto.Resquest.TipoProductoRequestDto;
-import com.gyl.CrudGyl.dto.Response.TipoProductoResponseDto;
+import com.gyl.CrudGyl.dto.resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.entity.TipoProducto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.TipoProductoMapper;
 import com.gyl.CrudGyl.repository.ITipoProductoRepositor;
-import com.gyl.CrudGyl.service.ITipoProductoService;
+import com.gyl.CrudGyl.service.interf.ITipoProductoService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class TipoProductoServiceImpl implements ITipoProductoService
 {
-    private ITipoProductoRepositor iTipoProductoRepositor;
+    private final ITipoProductoRepositor iTipoProductoRepositor;
 
     public TipoProductoServiceImpl(ITipoProductoRepositor iTipoProductoRepositor)
     {

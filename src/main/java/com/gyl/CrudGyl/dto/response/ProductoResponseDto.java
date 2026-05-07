@@ -1,6 +1,4 @@
-package com.gyl.CrudGyl.dto.Response;
-
-import com.gyl.CrudGyl.entity.TipoProducto;
+package com.gyl.CrudGyl.dto.response;
 
 import java.math.BigDecimal;
 

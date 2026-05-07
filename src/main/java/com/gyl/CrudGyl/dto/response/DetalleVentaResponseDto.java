@@ -1,4 +1,4 @@
-package com.gyl.CrudGyl.dto.Response;
+package com.gyl.CrudGyl.dto.response;
 
 import java.math.BigDecimal;
 

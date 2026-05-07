@@ -1,7 +1,7 @@
-package com.gyl.CrudGyl.service;
+package com.gyl.CrudGyl.service.interf;
 
-import com.gyl.CrudGyl.dto.Resquest.ClienteRequestDto;
-import com.gyl.CrudGyl.dto.Response.ClienteResponseDto;
+import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 
 import java.util.List;
 

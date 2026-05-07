@@ -1,9 +1,9 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.Response.VentaResponseDto;
-import com.gyl.CrudGyl.dto.Resquest.VentaRequestDto;
+import com.gyl.CrudGyl.dto.response.VentaResponseDto;
+import com.gyl.CrudGyl.dto.resquest.VentaRequestDto;
 import com.gyl.CrudGyl.enumP.EstadoVenta;
-import com.gyl.CrudGyl.service.IVentaService;
+import com.gyl.CrudGyl.service.interf.IVentaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

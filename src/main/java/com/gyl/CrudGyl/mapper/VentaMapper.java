@@ -1,11 +1,8 @@
 package com.gyl.CrudGyl.mapper;
 
-import com.gyl.CrudGyl.dto.Response.VentaResponseDto;
-import com.gyl.CrudGyl.dto.Resquest.VentaRequestDto;
-import com.gyl.CrudGyl.entity.Producto;
+import com.gyl.CrudGyl.dto.response.VentaResponseDto;
+import com.gyl.CrudGyl.dto.resquest.VentaRequestDto;
 import com.gyl.CrudGyl.entity.Venta;
-
-import java.time.LocalDate;
 
 public class VentaMapper
 {

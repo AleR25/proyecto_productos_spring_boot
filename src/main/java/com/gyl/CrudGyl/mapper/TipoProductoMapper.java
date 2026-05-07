@@ -1,7 +1,7 @@
 package com.gyl.CrudGyl.mapper;
 
-import com.gyl.CrudGyl.dto.Resquest.TipoProductoRequestDto;
-import com.gyl.CrudGyl.dto.Response.TipoProductoResponseDto;
+import com.gyl.CrudGyl.dto.resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.entity.TipoProducto;
 
 public class TipoProductoMapper

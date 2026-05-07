@@ -1,12 +1,12 @@
 package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.dto.Resquest.ClienteRequestDto;
-import com.gyl.CrudGyl.dto.Response.ClienteResponseDto;
+import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 import com.gyl.CrudGyl.entity.Cliente;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ClienteMapper;
 import com.gyl.CrudGyl.repository.IClienteRepositor;
-import com.gyl.CrudGyl.service.IClienteService;
+import com.gyl.CrudGyl.service.interf.IClienteService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class ClienteServicceImpl implements IClienteService
 {
-    private IClienteRepositor iClienteRepositor;
+    private final IClienteRepositor iClienteRepositor;
 
     public ClienteServicceImpl(IClienteRepositor iClienteRepositor) {
         this.iClienteRepositor = iClienteRepositor;
@@ -61,8 +61,6 @@ public class ClienteServicceImpl implements IClienteService
         return ClienteMapper.toResponseDto(guardado);
     }
 
-    //cambiar logica de forma que pueda elegir si el cliente esta activo
-    //o inactivo
     @Override
     public ClienteResponseDto darDeBaja(Long id) {
         return null;
