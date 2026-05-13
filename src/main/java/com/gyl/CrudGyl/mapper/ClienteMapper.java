@@ -3,11 +3,12 @@ package com.gyl.CrudGyl.mapper;
 import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
 import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 import com.gyl.CrudGyl.entity.Cliente;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ClienteMapper
 {
-    private ClienteMapper() {}
-
     public static Cliente toEntity(ClienteRequestDto dto)
     {
         Cliente cliente = new Cliente();

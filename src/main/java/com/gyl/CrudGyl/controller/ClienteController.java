@@ -4,6 +4,7 @@ import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
 import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 import com.gyl.CrudGyl.service.interf.IClienteService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,14 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cliente")
+@RequiredArgsConstructor
 public class ClienteController
 {
     private final IClienteService iClienteService;
-
-    public ClienteController(IClienteService iClienteService)
-    {
-        this.iClienteService = iClienteService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

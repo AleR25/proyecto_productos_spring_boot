@@ -3,11 +3,12 @@ package com.gyl.CrudGyl.mapper;
 import com.gyl.CrudGyl.dto.response.DetalleVentaResponseDto;
 import com.gyl.CrudGyl.dto.resquest.DetalleVentaRequestDto;
 import com.gyl.CrudGyl.entity.DetalleVenta;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DetalleVentaMapper
 {
-    private DetalleVentaMapper() {}
-
     public static DetalleVenta toEntity(DetalleVentaRequestDto dto)
     {
         DetalleVenta detalleVenta = new DetalleVenta();

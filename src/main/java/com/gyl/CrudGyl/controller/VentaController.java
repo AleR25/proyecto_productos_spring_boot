@@ -5,6 +5,7 @@ import com.gyl.CrudGyl.dto.resquest.VentaRequestDto;
 import com.gyl.CrudGyl.enumP.EstadoVenta;
 import com.gyl.CrudGyl.service.interf.IVentaService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,14 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/venta")
+@RequiredArgsConstructor
 public class VentaController
 {
     private final IVentaService iVentaService;
-
-    public VentaController(IVentaService iVentaService)
-    {
-        this.iVentaService = iVentaService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -8,19 +8,16 @@ import com.gyl.CrudGyl.mapper.TipoProductoMapper;
 import com.gyl.CrudGyl.repository.ITipoProductoRepositor;
 import com.gyl.CrudGyl.service.interf.ITipoProductoService;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TipoProductoServiceImpl implements ITipoProductoService
 {
     private final ITipoProductoRepositor iTipoProductoRepositor;
-
-    public TipoProductoServiceImpl(ITipoProductoRepositor iTipoProductoRepositor)
-    {
-        this.iTipoProductoRepositor = iTipoProductoRepositor;
-    }
 
     public TipoProducto buscarPorId(Long id) {
         return iTipoProductoRepositor.findById(id)

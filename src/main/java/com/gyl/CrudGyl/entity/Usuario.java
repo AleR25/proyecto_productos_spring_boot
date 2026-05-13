@@ -2,6 +2,8 @@ package com.gyl.CrudGyl.entity;
 
 import com.gyl.CrudGyl.enumP.Rol;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,11 +20,14 @@ public class Usuario implements UserDetails
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @Column(unique = true)
     private String username;
 
+    @Setter
     private String password;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Rol role;

@@ -1,27 +1,22 @@
 package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.dto.response.ProductoResponseDto;
 import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
 import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 import com.gyl.CrudGyl.entity.Cliente;
-import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.exception.RecursoNoEncontradoException;
 import com.gyl.CrudGyl.mapper.ClienteMapper;
-import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.repository.IClienteRepositor;
 import com.gyl.CrudGyl.service.interf.IClienteService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ClienteServicceImpl implements IClienteService
 {
     private final IClienteRepositor iClienteRepositor;
-
-    public ClienteServicceImpl(IClienteRepositor iClienteRepositor) {
-        this.iClienteRepositor = iClienteRepositor;
-    }
 
     @Override
     public ClienteResponseDto crear(ClienteRequestDto dto) {

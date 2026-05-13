@@ -3,11 +3,12 @@ package com.gyl.CrudGyl.mapper;
 import com.gyl.CrudGyl.dto.resquest.TipoProductoRequestDto;
 import com.gyl.CrudGyl.dto.response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.entity.TipoProducto;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TipoProductoMapper
 {
-    private TipoProductoMapper() {}
-
     public static TipoProducto toEntity(TipoProductoRequestDto dto)
     {
         TipoProducto tipoProducto = new TipoProducto();

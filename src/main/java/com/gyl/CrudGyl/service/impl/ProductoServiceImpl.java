@@ -9,22 +9,17 @@ import com.gyl.CrudGyl.mapper.ProductoMapper;
 import com.gyl.CrudGyl.repository.IProductoRepositor;
 import com.gyl.CrudGyl.service.interf.ITipoProductoService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProductoServiceImpl implements IProductoService
 {
     private final ITipoProductoService tipoProductoService;
     private final IProductoRepositor iproductoRepositor;
-
-    public ProductoServiceImpl(IProductoRepositor iproductoRepositor,
-                               ITipoProductoService tipoProductoService)
-    {
-        this.iproductoRepositor = iproductoRepositor;
-        this.tipoProductoService = tipoProductoService;
-    }
 
     @Override
     @Transactional

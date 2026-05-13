@@ -4,6 +4,7 @@ import com.gyl.CrudGyl.dto.resquest.TipoProductoRequestDto;
 import com.gyl.CrudGyl.dto.response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.service.interf.ITipoProductoService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,14 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tipoProducto")
+@RequiredArgsConstructor
 public class TipoProductoController
 {
     private final ITipoProductoService iTipoProductoService;
-
-    public TipoProductoController(ITipoProductoService iTipoProductoService)
-    {
-        this.iTipoProductoService = iTipoProductoService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

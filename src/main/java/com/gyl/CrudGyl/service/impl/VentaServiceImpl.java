@@ -16,25 +16,20 @@ import com.gyl.CrudGyl.repository.IProductoRepositor;
 import com.gyl.CrudGyl.repository.IVentaRepositor;
 import com.gyl.CrudGyl.service.interf.IVentaService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class VentaServiceImpl implements IVentaService
 {
     private final IVentaRepositor iVentaRepositor;
     private final IProductoRepositor iProductoRepositor;
     private final IClienteRepositor iClienteRepositor;
-
-    public VentaServiceImpl(IVentaRepositor iVentaRepositor, IProductoRepositor iProductoRepositor, IClienteRepositor iClienteRepositor) {
-        this.iVentaRepositor = iVentaRepositor;
-        this.iProductoRepositor = iProductoRepositor;
-        this.iClienteRepositor = iClienteRepositor;
-    }
 
     @Override
     @Transactional
