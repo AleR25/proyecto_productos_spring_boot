@@ -1,7 +1,7 @@
 package com.gyl.CrudGyl.service.interf;
 
 import com.gyl.CrudGyl.dto.response.VentaResponseDto;
-import com.gyl.CrudGyl.dto.resquest.VentaRequestDto;
+import com.gyl.CrudGyl.dto.request.VentaRequestDto;
 import com.gyl.CrudGyl.enumP.EstadoVenta;
 
 import java.util.List;

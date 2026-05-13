@@ -1,4 +1,4 @@
-package com.gyl.CrudGyl.dto.resquest;
+package com.gyl.CrudGyl.dto.request;
 
 public record LoginResquest
         (

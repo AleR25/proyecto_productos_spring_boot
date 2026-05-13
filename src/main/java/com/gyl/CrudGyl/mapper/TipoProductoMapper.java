@@ -1,6 +1,6 @@
 package com.gyl.CrudGyl.mapper;
 
-import com.gyl.CrudGyl.dto.resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.request.TipoProductoRequestDto;
 import com.gyl.CrudGyl.dto.response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.entity.TipoProducto;
 import lombok.AccessLevel;

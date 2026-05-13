@@ -1,57 +1,32 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.resquest.LoginResquest;
-import com.gyl.CrudGyl.security.JwtUtils;
-import lombok.RequiredArgsConstructor;
+import com.gyl.CrudGyl.dto.request.LoginRequestDTO;
+import com.gyl.CrudGyl.dto.request.RegistroRequestDTO;
+import com.gyl.CrudGyl.dto.response.RegistroResponseDTO;
+import com.gyl.CrudGyl.dto.response.TokenResponseDTO;
+import com.gyl.CrudGyl.service.AuthenticationService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
-@RequiredArgsConstructor
-public class AuthenticationController
-{
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtils jwtUtils;
+@RequestMapping("/api")
+public class AuthenticationController {
+    private final AuthenticationService authenticationService;
+
+    public AuthenticationController(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
+    @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public RegistroResponseDTO registrar(@Valid @RequestBody RegistroRequestDTO dto) {
+        return authenticationService.registrar(dto);
+    }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginResquest loginResquest)
-    {
-        try
-        {
-            //Autenticar al usuario (Spring lo busca en la DB y compara constraseñas)
-            Authentication authenticacion = authenticationManager.authenticate
-                    (
-                            new UsernamePasswordAuthenticationToken
-                                    (
-                                            loginResquest.username(),
-                                            loginResquest.password()
-                                    )
-                    );
-            //si la autenticacion fue exitosa, generamos el token
-            String token = jwtUtils.generateToken(authenticacion.getName());
-
-            //Devolvemos el token en un mapa o DTO
-            Map<String, String> response = new HashMap<>();
-            response.put("token", token);
-
-            return ResponseEntity.ok(response);
-        }
-        catch (AuthenticationException exception)
-        {
-            //Si falla (usuario o clave incorrecta)
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
-        }
+    @ResponseStatus(HttpStatus.OK)
+    public TokenResponseDTO autenticar(@Valid @RequestBody LoginRequestDTO dto) {
+        return authenticationService.login(dto);
     }
 }

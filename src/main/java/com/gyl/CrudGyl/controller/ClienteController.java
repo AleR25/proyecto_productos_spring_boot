@@ -1,6 +1,6 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.request.ClienteRequestDto;
 import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 import com.gyl.CrudGyl.service.interf.IClienteService;
 import jakarta.validation.Valid;

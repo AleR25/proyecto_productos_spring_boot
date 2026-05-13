@@ -2,7 +2,7 @@ package com.gyl.CrudGyl.controller;
 
 import com.gyl.CrudGyl.service.interf.IProductoService;
 import com.gyl.CrudGyl.dto.response.ProductoResponseDto;
-import com.gyl.CrudGyl.dto.resquest.ProductoRequestDto;
+import com.gyl.CrudGyl.dto.request.ProductoRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

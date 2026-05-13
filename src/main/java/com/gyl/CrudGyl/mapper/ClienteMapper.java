@@ -1,6 +1,6 @@
 package com.gyl.CrudGyl.mapper;
 
-import com.gyl.CrudGyl.dto.resquest.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.request.ClienteRequestDto;
 import com.gyl.CrudGyl.dto.response.ClienteResponseDto;
 import com.gyl.CrudGyl.entity.Cliente;
 import lombok.AccessLevel;

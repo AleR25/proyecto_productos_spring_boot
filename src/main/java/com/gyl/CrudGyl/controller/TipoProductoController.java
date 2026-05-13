@@ -1,6 +1,6 @@
 package com.gyl.CrudGyl.controller;
 
-import com.gyl.CrudGyl.dto.resquest.TipoProductoRequestDto;
+import com.gyl.CrudGyl.dto.request.TipoProductoRequestDto;
 import com.gyl.CrudGyl.dto.response.TipoProductoResponseDto;
 import com.gyl.CrudGyl.service.interf.ITipoProductoService;
 import jakarta.validation.Valid;

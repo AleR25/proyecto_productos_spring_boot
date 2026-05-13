@@ -1,7 +1,7 @@
 package com.gyl.CrudGyl.mapper;
 
 import com.gyl.CrudGyl.dto.response.DetalleVentaResponseDto;
-import com.gyl.CrudGyl.dto.resquest.DetalleVentaRequestDto;
+import com.gyl.CrudGyl.dto.request.DetalleVentaRequestDto;
 import com.gyl.CrudGyl.entity.DetalleVenta;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
