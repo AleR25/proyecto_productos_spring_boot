@@ -21,6 +21,7 @@ public record ProductoRequestDto
             Integer stock,
 
             @NotNull(message = "El ID de tipo producto es obligatotio")
+            @Min(value = 1, message = "El ID del Tipo de Producto tiene que ser positivo")
             Long tipoProductoId
 
         )

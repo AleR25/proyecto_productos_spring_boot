@@ -9,6 +9,7 @@ public record DetalleVentaRequestDto
                 int cantidad,
 
                 @NotNull(message = "El ID de producto es obligatorio")
+                @Min(value = 1, message = "no se puede pasa un ID producto negativo")
                 Long productoId
         )
 {
