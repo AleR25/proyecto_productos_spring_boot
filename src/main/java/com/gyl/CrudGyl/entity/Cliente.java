@@ -37,6 +37,9 @@ public class Cliente
     @OneToMany(mappedBy = "cliente")
     private List<Venta> ventas = new ArrayList<>();
 
-    @Column(nullable = false)
-    private boolean estadoCliente;
+    private boolean estadoCliente = true;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }

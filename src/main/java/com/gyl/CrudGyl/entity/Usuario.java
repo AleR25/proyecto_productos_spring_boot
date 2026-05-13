@@ -32,6 +32,9 @@ public class Usuario implements UserDetails
     @Column(nullable = false)
     private Rol role;
 
+    @OneToOne(mappedBy = "id_cliente")
+    private Cliente cliente;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
